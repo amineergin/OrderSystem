@@ -14,14 +14,14 @@
 - Proje kapsamında ürünlerin ait olduğu kategoriler Category enum'unda belirtilmiştir. Bu kapsamda CLOTHING kategorisindeki ürünlerin size attribute'una M;S;L gibi beden bilgileri dışında bir bilgi yazılamaması, benzer olarak SHOES kategorisindeki ürünlerin size attribute'una 38;39;40 gibi beden bilgileri dışında bir bilgi yazılamaması AttributeValidator classında yazılan fonksiyonlarla sağlanmıştır.
 - Proje kapsamında yapılan endpointler şu şekildedir:
 1. @GetMapping ->
-       1.1) localhost:8080/api/customer/listAllCustomers -> Tüm müşterilerin listelenmesi
-       1.2) localhost:8080/api/product/5 -> Ürünlerin id'ye göre listelenmesi
-       1.3) localhost:8080/api/product/getAllProducts -> Tüm ürünlerin listelenmesi
-       1.4) localhost:8080/api/order/getAllOrders -> Tüm siparişlerin listelenmesi
-       1.5) localhost:8080/api/order/listOrdersByProductId/1 -> Ürün id'sine göre siparişlerin listelenmesi
-       1.6) localhost:8080/api/product/getProductsByCategory?category=SHOES -> Kategorilere göre ürünlerin listelenmesi (@RequestParam)
+       1.1 localhost:8080/api/customer/listAllCustomers -> Tüm müşterilerin listelenmesi
+       1.2 localhost:8080/api/product/5 -> Ürünlerin id'ye göre listelenmesi
+       1.3 localhost:8080/api/product/getAllProducts -> Tüm ürünlerin listelenmesi
+       1.4 localhost:8080/api/order/getAllOrders -> Tüm siparişlerin listelenmesi
+       1.5 localhost:8080/api/order/listOrdersByProductId/1 -> Ürün id'sine göre siparişlerin listelenmesi
+       1.6 localhost:8080/api/product/getProductsByCategory?category=SHOES -> Kategorilere göre ürünlerin listelenmesi (@RequestParam)
 
-2. @PostMapping ->
+3. @PostMapping ->
        2.1) localhost:8080/api/customer/createCustomer -> Müşteri oluşturma -> Postman isteği = 
 - {
     "name":"CustomerName",
@@ -29,7 +29,7 @@
     "email":"Customer@gmail.com",
     "password":"Customer123"
 }
-        2.2) localhost:8080/api/product/createProduct -> Ürün oluşturma -> Postman isteği =
+        2.2 localhost:8080/api/product/createProduct -> Ürün oluşturma -> Postman isteği =
   - {
     "title":"Shoe",
     "description":"Casual",
@@ -49,7 +49,7 @@
     ]
 }
 
-        2.3) localhost:8080/api/order/createOrder -> Sipariş oluşturma -> Postman isteği =
+        2.3 localhost:8080/api/order/createOrder -> Sipariş oluşturma -> Postman isteği =
     - {
     "customer" : {
         "id" : 1
@@ -62,5 +62,5 @@
     ]
 }
 
-      2.4) localhost:8080/api/order/deliverOrder/629173 -> Sipariş id'sine göre sipariş teslim etme
-      2.5) localhost:8080/api/order/cancelOrder/111040 -> Sipariş id'sine göre sipariş iptal etme
+      2.4 localhost:8080/api/order/deliverOrder/629173 -> Sipariş id'sine göre sipariş teslim etme
+      2.5 localhost:8080/api/order/cancelOrder/111040 -> Sipariş id'sine göre sipariş iptal etme
