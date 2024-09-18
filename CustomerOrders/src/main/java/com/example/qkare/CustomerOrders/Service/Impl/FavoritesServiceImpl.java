@@ -48,4 +48,9 @@ public class FavoritesServiceImpl implements FavoritesService {
     public List<Favorites> getFavs() {
         return favoritesRepository.findAll();
     }
+
+    @Override
+    public List<Favorites> getFavsByCustomerId(Long customerId) {
+        return favoritesRepository.findByCustomer_id(customerId);
+    }
 }
