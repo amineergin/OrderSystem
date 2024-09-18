@@ -7,4 +7,5 @@ import java.util.List;
 public interface FavoritesService {
     Favorites createFavList(Favorites favorites);
     List<Favorites> getFavs();
+    List<Favorites> getFavsByCustomerId(Long customerId);
 }
