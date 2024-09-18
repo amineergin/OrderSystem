@@ -22,15 +22,15 @@
   6. localhost:8080/api/product/getProductsByCategory?category=SHOES -> Kategorilere göre ürünlerin listelenmesi (@RequestParam)
 
 3. @PostMapping ->
- 1. localhost:8080/api/customer/createCustomer -> Müşteri oluşturma -> Postman isteği = 
-- {
+ 1. localhost:8080/api/customer/createCustomer -> Müşteri oluşturma -> Postman isteği =
+ 2. {
     "name":"CustomerName",
     "surname":"CustomerSurname",
     "email":"Customer@gmail.com",
     "password":"Customer123"
 }
-  2. localhost:8080/api/product/createProduct -> Ürün oluşturma -> Postman isteği =
-  - {
+  3. localhost:8080/api/product/createProduct -> Ürün oluşturma -> Postman isteği =
+  4.  {
     "title":"Shoe",
     "description":"Casual",
     "price":1350,
@@ -49,7 +49,7 @@
     ]
 }
   3. localhost:8080/api/order/createOrder -> Sipariş oluşturma -> Postman isteği =
-    - {
+  4. {
     "customer" : {
         "id" : 1
     },
@@ -60,5 +60,5 @@
         }
     ]
 }
-  4. localhost:8080/api/order/deliverOrder/629173 -> Sipariş id'sine göre sipariş teslim etme
-  5. localhost:8080/api/order/cancelOrder/111040 -> Sipariş id'sine göre sipariş iptal etme
+  5. localhost:8080/api/order/deliverOrder/629173 -> Sipariş id'sine göre sipariş teslim etme
+  6. localhost:8080/api/order/cancelOrder/111040 -> Sipariş id'sine göre sipariş iptal etme
