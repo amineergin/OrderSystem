@@ -23,6 +23,7 @@
   5. localhost:8080/api/order/listOrdersByProductId/1 -> Ürün id'sine göre siparişlerin listelenmesi
   6. localhost:8080/api/product/getProductsByCategory?category=SHOES -> Kategorilere göre ürünlerin listelenmesi (@RequestParam)
   7. localhost:8080/api/favorites/getAllFavLists -> Tüm favori listelerinin listelenmesi
+  8. localhost:8080/api/favorites/getFavListByCustomerId/1 -> CustomerId'ye göre favori listelerinin listelenmesi
 
 ### @PostMapping ->
  1. localhost:8080/api/customer/createCustomer -> Müşteri oluşturma -> Postman isteği =
