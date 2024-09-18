@@ -17,22 +17,19 @@
   1. localhost:8080/api/customer/listAllCustomers -> Tüm müşterilerin listelenmesi
   2. localhost:8080/api/product/5 -> Ürünlerin id'ye göre listelenmesi
   3. localhost:8080/api/product/getAllProducts -> Tüm ürünlerin listelenmesi
-       1. localhost:8080/api/customer/listAllCustomers -> Tüm müşterilerin listelenmesi
-       1. localhost:8080/api/product/5 -> Ürünlerin id'ye göre listelenmesi
-       1. localhost:8080/api/product/getAllProducts -> Tüm ürünlerin listelenmesi
-       1. localhost:8080/api/order/getAllOrders -> Tüm siparişlerin listelenmesi
-       1. localhost:8080/api/order/listOrdersByProductId/1 -> Ürün id'sine göre siparişlerin listelenmesi
-       1. localhost:8080/api/product/getProductsByCategory?category=SHOES -> Kategorilere göre ürünlerin listelenmesi (@RequestParam)
+  4. localhost:8080/api/order/getAllOrders -> Tüm siparişlerin listelenmesi
+  5. localhost:8080/api/order/listOrdersByProductId/1 -> Ürün id'sine göre siparişlerin listelenmesi
+  6. localhost:8080/api/product/getProductsByCategory?category=SHOES -> Kategorilere göre ürünlerin listelenmesi (@RequestParam)
 
 3. @PostMapping ->
-       2. localhost:8080/api/customer/createCustomer -> Müşteri oluşturma -> Postman isteği = 
+ 1. localhost:8080/api/customer/createCustomer -> Müşteri oluşturma -> Postman isteği = 
 - {
     "name":"CustomerName",
     "surname":"CustomerSurname",
     "email":"Customer@gmail.com",
     "password":"Customer123"
 }
-        2. localhost:8080/api/product/createProduct -> Ürün oluşturma -> Postman isteği =
+  2. localhost:8080/api/product/createProduct -> Ürün oluşturma -> Postman isteği =
   - {
     "title":"Shoe",
     "description":"Casual",
@@ -51,8 +48,7 @@
         }
     ]
 }
-
-        2. localhost:8080/api/order/createOrder -> Sipariş oluşturma -> Postman isteği =
+  3. localhost:8080/api/order/createOrder -> Sipariş oluşturma -> Postman isteği =
     - {
     "customer" : {
         "id" : 1
@@ -64,6 +60,5 @@
         }
     ]
 }
-
-      2. localhost:8080/api/order/deliverOrder/629173 -> Sipariş id'sine göre sipariş teslim etme
-      2. localhost:8080/api/order/cancelOrder/111040 -> Sipariş id'sine göre sipariş iptal etme
+  4. localhost:8080/api/order/deliverOrder/629173 -> Sipariş id'sine göre sipariş teslim etme
+  5. localhost:8080/api/order/cancelOrder/111040 -> Sipariş id'sine göre sipariş iptal etme
