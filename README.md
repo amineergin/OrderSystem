@@ -1,4 +1,4 @@
-# OrderSystem
+## OrderSystem
 - Uygulama customer, product, comment, order entitylerinden oluşur.
 - Docker ile postgreSql kullanılarak geliştirilmiştir.
 - Bilgisayarınızda docker desktop açıkken Intellij-idea terminalde cd ile dosyanın src/main/resources klasörüne gidin ve 'docker-compose -f docker-compose.yml up -d' komutlarını yazın. Bu komutlar postgreSql ile bağlantı kurmanızı sağlayacaktır. Ancak bunun için intellij-idea'da postgreSql database seçerek kendinize bir database oluşturun. Bu isim application proporties'de yazacağınız database ismi olacak. Docker'ı durdurmak için terminalde yine aynı dizinde 'docker stop $(docker ps -a -q)' kodlarını yazabilirsiniz.
@@ -13,7 +13,7 @@
   3. Product - ProductAttribute - OneToMany
 - Proje kapsamında ürünlerin ait olduğu kategoriler Category enum'unda belirtilmiştir. Bu kapsamda CLOTHING kategorisindeki ürünlerin size attribute'una M;S;L gibi beden bilgileri dışında bir bilgi yazılamaması, benzer olarak SHOES kategorisindeki ürünlerin size attribute'una 38;39;40 gibi beden bilgileri dışında bir bilgi yazılamaması AttributeValidator classında yazılan fonksiyonlarla sağlanmıştır.
 - Proje kapsamında yapılan endpointler şu şekildedir:
-1. @GetMapping -> 
+### @GetMapping -> 
   1. localhost:8080/api/customer/listAllCustomers -> Tüm müşterilerin listelenmesi
   2. localhost:8080/api/product/5 -> Ürünlerin id'ye göre listelenmesi
   3. localhost:8080/api/product/getAllProducts -> Tüm ürünlerin listelenmesi
@@ -21,16 +21,16 @@
   5. localhost:8080/api/order/listOrdersByProductId/1 -> Ürün id'sine göre siparişlerin listelenmesi
   6. localhost:8080/api/product/getProductsByCategory?category=SHOES -> Kategorilere göre ürünlerin listelenmesi (@RequestParam)
 
-3. @PostMapping ->
+### @PostMapping ->
  1. localhost:8080/api/customer/createCustomer -> Müşteri oluşturma -> Postman isteği =
- 2. {
+ > {
     "name":"CustomerName",
     "surname":"CustomerSurname",
     "email":"Customer@gmail.com",
     "password":"Customer123"
 }
   3. localhost:8080/api/product/createProduct -> Ürün oluşturma -> Postman isteği =
-  4.  {
+ > {
     "title":"Shoe",
     "description":"Casual",
     "price":1350,
@@ -49,7 +49,7 @@
     ]
 }
   3. localhost:8080/api/order/createOrder -> Sipariş oluşturma -> Postman isteği =
-  4. {
+ > {
     "customer" : {
         "id" : 1
     },
