@@ -28,4 +28,9 @@ public class FavoritesController {
     public List<Favorites> getAllFavLists(){
         return favoritesService.getFavs();
     }
+
+    @GetMapping("/getFavListByCustomerId/{customerId}")
+    public List<Favorites> getFavListsByCustomerId(@PathVariable Long customerId){
+        return favoritesService.getFavsByCustomerId(customerId);
+    }
 }
