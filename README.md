@@ -13,7 +13,10 @@
   3. Product - ProductAttribute - OneToMany
 - Proje kapsamında ürünlerin ait olduğu kategoriler Category enum'unda belirtilmiştir. Bu kapsamda CLOTHING kategorisindeki ürünlerin size attribute'una M;S;L gibi beden bilgileri dışında bir bilgi yazılamaması, benzer olarak SHOES kategorisindeki ürünlerin size attribute'una 38;39;40 gibi beden bilgileri dışında bir bilgi yazılamaması AttributeValidator classında yazılan fonksiyonlarla sağlanmıştır.
 - Proje kapsamında yapılan endpointler şu şekildedir:
-1. @GetMapping ->
+1. @GetMapping -> 
+  1. localhost:8080/api/customer/listAllCustomers -> Tüm müşterilerin listelenmesi
+  2. localhost:8080/api/product/5 -> Ürünlerin id'ye göre listelenmesi
+  3. localhost:8080/api/product/getAllProducts -> Tüm ürünlerin listelenmesi
        1. localhost:8080/api/customer/listAllCustomers -> Tüm müşterilerin listelenmesi
        1. localhost:8080/api/product/5 -> Ürünlerin id'ye göre listelenmesi
        1. localhost:8080/api/product/getAllProducts -> Tüm ürünlerin listelenmesi
