@@ -1,6 +1,8 @@
 ## OrderSystem
 - Uygulama Docker ile postgreSql kullanılarak geliştirilmiştir.
 - Bilgisayarınızda docker desktop açıkken Intellij-idea terminalde cd ile dosyanın src/main/resources klasörüne gidin ve 'docker-compose -f docker-compose.yml up -d' komutlarını yazın. Bu komutlar postgreSql ile bağlantı kurmanızı sağlayacaktır. Ancak bunun için intellij-idea'da postgreSql database seçerek kendinize bir database oluşturun. Bu isim application proporties'de yazacağınız database ismi olacak. Docker'ı durdurmak için terminalde yine aynı dizinde 'docker stop $(docker ps -a -q)' kodlarını yazabilirsiniz.
+- Proje kapsamında sipariş oluşturulurken üründen kaç adet sipariş verildiği bilgisi alınmakta ve ürünün stoğu buna göre yenilenmektedir.
+- Ayrıca, iptal edilen sipariş doğrultusunda ürün stoğu yenilenmektedir ve sipariş edilen miktar kadar artmaktadır. Bu durum, siparişin henüz kargoya verilmeden önce iptal edilme süreci içindir. Buna göre henüz kargoya verilmemiş bir sipariş iptal edildiyse stok doğrudan arttırılabilir.
 - Proje'de yer alan varlıklar şu şekildedir:
   1. Customer
   2. Product
@@ -9,7 +11,7 @@
   5. Favorites
 - Varlıklar arası ilişkiler şu şekildedir:
   1. Customer - Orders - OneToMany
-  2. Orders - Product - ManyToMany
+  2. Orders - OrderItem - OneToMany
   3. Product - ProductAttribute - OneToMany
   4. Favorites - Customer - ManyToOne
   5. Favorites - Product - ManyToMany
