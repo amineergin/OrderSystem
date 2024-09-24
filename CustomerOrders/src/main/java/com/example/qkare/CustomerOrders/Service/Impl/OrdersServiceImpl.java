@@ -119,12 +119,4 @@ public class OrdersServiceImpl implements OrdersService {
                 .orElseThrow(() -> new RuntimeException("Customer not found!"));
         return ordersRepository.findByCustomerId(customerId);
     }
-
-    @Override
-    public List<Orders> getOrdersByProductId(Long productId) {
-        Product existingProduct = productService.findById(productId)
-                .orElseThrow(() -> new RuntimeException("Product not found!"));
-
-        return ordersRepository.findByproductsId(productId);
-    }
 }
