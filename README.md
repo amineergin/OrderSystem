@@ -8,7 +8,8 @@
   2. Product
   3. ProductAttribute
   4. Orders
-  5. Favorites
+  5. OrderItem
+  6. Favorites
 - Varlıklar arası ilişkiler şu şekildedir:
   1. Customer - Orders - OneToMany
   2. Orders - OrderItem - OneToMany
