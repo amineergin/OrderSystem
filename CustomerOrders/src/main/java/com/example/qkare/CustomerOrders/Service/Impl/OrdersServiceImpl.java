@@ -27,24 +27,45 @@ public class OrdersServiceImpl implements OrdersService {
     private ProductRepository productRepository;
 
     @Override
-    public Orders createOrder(Orders order) {
+   public Orders createOrder(Orders order) {
         Customer customer = customerService.findCustomerById(order.getCustomer().getId())
-                .orElseThrow(()-> new RuntimeException("Customer not found!"));
+                .orElseThrow(() -> new RuntimeException("Customer not found!"));
+
         Orders createdOrder = new Orders();
         createdOrder.setOrderNo(createRandomNumber());
         createdOrder.setOrderDate(LocalDateTime.now());
         createdOrder.setCargoName(order.getCargoName());
         createdOrder.setCustomer(customer);
 
-        // Mevcut ürünleri veritabanından bul ve order'a ekle
-        Set<Product> products =new HashSet<>();
-        for(Product product : products){
-            Product existingProduct = productService.findById(product.getId())
-                    .orElseThrow(() -> new RuntimeException("Product not found!"));
-            products.add(existingProduct);
-        }
-        createdOrder.setProducts(products);
+        Set<OrderItem> orderItems = new HashSet<>();
 
+        for (OrderItem orderItem : order.getOrderItems()) {
+            // Veritabanından sipariş edilen ürünü bul
+            Product productFromDb = productService.findById(orderItem.getProduct().getId())
+                    .orElseThrow(() -> new RuntimeException("Product not found!"));
+
+            // Stok kontrolü: Sipariş edilen miktar kadar stokta var mı?
+            if (productFromDb.getStock() < orderItem.getQuantity()) {
+                throw new RuntimeException("Not enough stock for product: " + productFromDb.getTitle());
+            }
+
+            // Stok azaltma: Sipariş edilen miktar kadar ürünü stoktan düş
+            productFromDb.decreaseStock(orderItem.getQuantity());
+
+            // OrderItem oluştur ve gerekli bilgileri ekle
+            OrderItem newOrderItem = new OrderItem();
+            newOrderItem.setOrder(createdOrder); // Sipariş ile ilişkilendir
+            newOrderItem.setProduct(productFromDb); // Ürün ile ilişkilendir
+            newOrderItem.setQuantity(orderItem.getQuantity()); // Sipariş edilen miktarı belirle
+
+            // OrderItem'ı sipariş listesine ekle
+            orderItems.add(newOrderItem);
+
+            // Ürünü güncelle ve kaydet
+            productService.save(productFromDb);
+        }
+
+        createdOrder.setOrderItems(orderItems);
         return ordersRepository.save(createdOrder);
     }
 
@@ -72,10 +93,24 @@ public class OrdersServiceImpl implements OrdersService {
     public Orders cancelOrder(Integer orderNo) {
         Orders existingOrder = ordersRepository.findByOrderNo(orderNo)
                 .orElseThrow(() -> new RuntimeException("Order not found!"));
-        if(existingOrder.getDeliveryDate() == null) {
-            existingOrder.setCanceled(true);
+        if (!existingOrder.isCanceled() && existingOrder.getDeliveryDate() == null) {
+            existingOrder.setCanceled(true); // Sipariş iptal ediliyor
+
+            // Sipariş öğelerindeki ürünlerin stoğunu artır
+            for (OrderItem orderItem : existingOrder.getOrderItems()) {
+                Product product = orderItem.getProduct();
+                int quantity = orderItem.getQuantity(); // Sipariş edilen miktar
+                System.out.println("Get Quantity: " + quantity);
+                // Stoğu miktar kadar artır
+                product.increaseStock(quantity);
+                productService.save(product); // Ürünü kaydet
+            }
+
+            // İptal edilen siparişi kaydet
             return ordersRepository.save(existingOrder);
-        }return null;
+        }
+
+        return null;
     }
 
     @Override
