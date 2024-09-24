@@ -43,7 +43,20 @@ public class Product {
     @EqualsAndHashCode.Exclude
     private Set<ProductAttribute> attributes;
 
-    @ManyToMany(mappedBy = "products", cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.EAGER)
+    @ManyToMany(mappedBy = "products",cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.EAGER)
     @JsonIgnore
-    private Set<Orders> orders;
+    @EqualsAndHashCode.Exclude
+    private Set<Favorites> favorites;
+
+    public void decreaseStock(int amount) {
+        if (this.stock >= amount) {
+            this.stock -= amount;
+        } else {
+            throw new IllegalArgumentException("Not enough stock available for product: " + this.title);
+        }
+    }
+
+    public void increaseStock(int amount){
+        this.stock += amount;
+    }
 }
