@@ -10,5 +10,4 @@ public interface OrdersService {
     Orders deliverOrder(Integer orderNo);
     Orders cancelOrder(Integer orderNo);
     List<Orders> getOrdersByCustomerId(Long customerId);
-    List<Orders> getOrdersByProductId(Long productId);
 }
